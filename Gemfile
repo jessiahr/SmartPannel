@@ -3,9 +3,14 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
+gem 'pg'
+group :development, :test do
+  #gem 'sqlite3' #this is going to get replaced with postgres shortly
+end
+group :production do
+  #gem 'mysql2'  #use for prodend
+  gem 'rails_12factor'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -18,6 +23,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'therubyracer'  # If using Ruby
+gem 'jquery-rails'  # If using Bootstrap's JS plugins.
+gem 'less-rails-bootstrap', '~> 3.0.0.wip', github: 'sinfin/less-rails-bootstrap-3'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -32,6 +40,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem "hirb"
+gem 'rest-client'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
